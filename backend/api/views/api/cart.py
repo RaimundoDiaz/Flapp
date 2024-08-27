@@ -66,5 +66,9 @@ class CartViewSet(viewsets.ModelViewSet):
 
     def list(self, request, *args, **kwargs):
         queryset = self.get_queryset()
+        # Si no se ha creado un carrito entonces hago uno
+        if queryset.count() == 0:
+            self.create(request)
+            queryset = self.get_queryset()
         serializer = self.get_serializer(queryset, many=True)
-        return Response(serializer.data, status=status.HTTP_200_OK)
+        return Response(serializer.data[0], status=status.HTTP_200_OK)

@@ -1,6 +1,12 @@
+backend
 1. supuse que por defecto los productos no tenian descuento, por lo que el modelo de los productos en el campo descuento por defecto es 0.
 2. asumo que los productos que se reciben en el endpoint `api/cart` estan correctos, es decir, su precio y descuento sobreescriben el dado por la DummyJson.
 3. asumo que el descuento que se recibe en el endpoint `api/cart` viene en unidades, por ejemplo `"discount": 10, "price": 50` es un descuento de 10 unidades, es decir el producto queda en 40 (0-10=40).
 4. asumi que descuento total era el total descontado, es decir lo se ahorra la persona (cantidad*descuento), ej: `"discount": 10, "price": 50, "quantity": 4`, descuento_total = 40 (10*4).
 5. asumi que todos los productos en el listado de productos a comprar, serian productos que si extisten en la tienda, por ejemplo, como se usa una paginacion 10 de 10 solo tengo los primeros 100 productos de la api, es decir si se pide un producto con un id mayor que no este en estos 100 productos recibidos de la api de DummyJson, el producto no se encuentra en la tienda por lo que no es que no tenga stock, sino que no existe, de tal manera que se asume que no se puede completar el carrito, y al imprimir en consola se imprimira 'El producto no existe en nuestra tienda.' ya que no hay informacion para rellenar".
 6. asumi que al devolver un booleano se quiere recibir un json, por lo que se devuelve un json con el booleano que corresponde a si se pudo o no recibir el carrito, junto con el mensaje que especifica que producto falla.
+
+frontend
+1. Para calcular si el carrito podia ser despachado utilice la misma formula que para el endpoint `api/cart` por lo que cada vez que se presiona el boton de cotizar despacho se verifica el real stock de los productos del carrito y si alguno no esta disponible o si su stock real es menor a la cantidad que estan pidiendo se rechaza el pedido
+2. cuando se muestra el mensaje de `Envío Flapp⚡️ - VALOR`, VALOR lo deje como el costo ahorrado del usuario al usar flapp, es decir el total de la compra menos el precio con descuento
+3. Le deje un form 'dummy' a la vista de checkout para que se vea un poco mas cercano a lo que seria un checkout normal ya que se veia muy vacio solo con un boton.
