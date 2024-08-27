@@ -1,7 +1,8 @@
 # Nombre del Proyecto
 
-Descripción breve del proyecto y su propósito.
+Entrevista técnica para Flapp⚡️
 
+## Supuestos en archivo supuestos.txt
 ## Estructura del Proyecto
 
 ```
